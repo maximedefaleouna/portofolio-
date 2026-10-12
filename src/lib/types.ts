@@ -1,11 +1,20 @@
 export type Publication = "draft" | "published" | "archived";
 
 export type MediaRole =
-  | "cover" | "thumbnail" | "desktop" | "mobile" | "tablet" | "gallery"
-  | "diagram" | "video" | "certificate" | "logo" | "other";
+  | "cover"
+  | "thumbnail"
+  | "desktop"
+  | "mobile"
+  | "tablet"
+  | "gallery"
+  | "diagram"
+  | "video"
+  | "certificate"
+  | "logo"
+  | "other";
 
 export type Presentation =
-  | "landscape" | "portrait" | "square" | "original" | "full" | "contained" | "cropped";
+  "landscape" | "portrait" | "square" | "original" | "full" | "contained" | "cropped";
 
 export type MediaKind = "image" | "video" | "pdf" | "embed";
 /** sample = bundled demo asset, local = object URL from this browser session, external = remote URL */
@@ -34,7 +43,14 @@ export interface MediaItem {
 }
 
 export type ProjectLayout =
-  | "editorial" | "desktop" | "mobile" | "compact" | "video" | "case-study" | "experimental" | "archived";
+  | "editorial"
+  | "desktop"
+  | "mobile"
+  | "compact"
+  | "video"
+  | "case-study"
+  | "experimental"
+  | "archived";
 
 export type ProjectStatus = "in-progress" | "completed" | "maintained" | "paused";
 

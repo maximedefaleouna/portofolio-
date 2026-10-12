@@ -1,29 +1,36 @@
-# Welcome to your Lovable project
+# Portfolio
 
-This project was built with [Lovable](https://lovable.dev).
+Portfolio personnel développé avec React, Vite et Tailwind CSS.
 
-## Build with Lovable
+## Fonctionnalités
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+- Présentation personnelle et statut de disponibilité
+- Projets récents avec images, liens et technologies utilisées
+- Parcours professionnel et formation
+- Liste de compétences catégorisées
+- Section Notes et contact
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+## Technologies
 
-## Development
+- [React 19](https://react.dev/)
+- [Vite](https://vite.dev/)
+- [Tailwind CSS v4](https://tailwindcss.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Lucide Icons](https://lucide.dev/)
+- [Radix UI](https://www.radix-ui.com/)
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## Installation et démarrage
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+```bash
+# Installation des dépendances
+npm install
+
+# Démarrer le serveur de développement
 npm run dev
+
+# Compiler pour la production
+npm run build
+
+# Lancer les tests
+npm run test
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS

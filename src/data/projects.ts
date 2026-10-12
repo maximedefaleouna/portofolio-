@@ -1,12 +1,35 @@
 import type { MediaItem, Project } from "@/lib/types";
 
-const m = (id: string, src: string, role: MediaItem["role"], presentation: MediaItem["presentation"], caption: string, alt: string): MediaItem => ({
-  id, kind: "image", source: "sample", src, name: src.replace("sample:", "") + ".jpg", role, presentation,
-  fit: presentation === "cropped" ? "cover" : "contain", focalX: 50, focalY: 50, caption, alt,
+const m = (
+  id: string,
+  src: string,
+  role: MediaItem["role"],
+  presentation: MediaItem["presentation"],
+  caption: string,
+  alt: string,
+): MediaItem => ({
+  id,
+  kind: "image",
+  source: "sample",
+  src,
+  name: src.replace("sample:", "") + ".jpg",
+  role,
+  presentation,
+  fit: presentation === "cropped" ? "cover" : "contain",
+  focalX: 50,
+  focalY: 50,
+  caption,
+  alt,
 });
 
 const base = {
-  frontend: [], backend: [], databases: [], tools: [], apis: [], links: {}, featured: false,
+  frontend: [],
+  backend: [],
+  databases: [],
+  tools: [],
+  apis: [],
+  links: {},
+  featured: false,
 } satisfies Partial<Project>;
 
 // Demo projects — replaceable sample content.
@@ -16,8 +39,10 @@ export const projectsSeed: Project[] = [
     id: "p1",
     title: "Fleet operations dashboard",
     slug: "fleet-operations-dashboard",
-    shortDescription: "A shipment-tracking console for a mid-size logistics team, built around fast filtering and dense tables.",
-    fullDescription: "## Overview\nA web dashboard that consolidates shipment status, delivery performance and fleet activity into one screen.\n\n- Server-side filtered tables\n- Saved views per operator\n- Live status updates",
+    shortDescription:
+      "A shipment-tracking console for a mid-size logistics team, built around fast filtering and dense tables.",
+    fullDescription:
+      "## Overview\nA web dashboard that consolidates shipment status, delivery performance and fleet activity into one screen.\n\n- Server-side filtered tables\n- Saved views per operator\n- Live status updates",
     category: "Web application",
     layout: "desktop",
     status: "completed",
@@ -28,21 +53,37 @@ export const projectsSeed: Project[] = [
     publication: "published",
     order: 1,
     role: "Frontend lead (demo)",
-    context: "Operators were switching between four tools to answer a single question: where is this shipment?",
+    context:
+      "Operators were switching between four tools to answer a single question: where is this shipment?",
     objectives: "Reduce lookup time and give managers one reliable view of delivery performance.",
     frontend: ["React", "TypeScript", "TanStack Query", "Tailwind CSS"],
     backend: ["Node.js", "Fastify"],
     databases: ["PostgreSQL"],
     tools: ["Vite", "Playwright"],
-    architecture: "A typed API layer sits between the UI and services. Tables query paginated endpoints; filters are serialised in the URL so views can be shared.",
+    architecture:
+      "A typed API layer sits between the UI and services. Tables query paginated endpoints; filters are serialised in the URL so views can be shared.",
     challenges: "Rendering 10k+ rows without jank while keeping keyboard navigation accessible.",
     solutions: "Row virtualisation, memoised cell renderers and a roving-tabindex grid pattern.",
     results: "Demo result — describe a measurable outcome here.",
     lessons: "URL-as-state removed a whole class of sync bugs.",
     links: { demo: "https://example.com" },
     media: [
-      m("m1", "sample:desktop", "cover", "original", "Overview screen with shipment KPIs", "Logistics dashboard showing shipment metrics and a performance chart"),
-      m("m2", "sample:diagram", "diagram", "full", "Service architecture", "Architecture diagram with client, gateway, services and database"),
+      m(
+        "m1",
+        "sample:desktop",
+        "cover",
+        "original",
+        "Overview screen with shipment KPIs",
+        "Logistics dashboard showing shipment metrics and a performance chart",
+      ),
+      m(
+        "m2",
+        "sample:diagram",
+        "diagram",
+        "full",
+        "Service architecture",
+        "Architecture diagram with client, gateway, services and database",
+      ),
     ],
   },
   {
@@ -50,8 +91,10 @@ export const projectsSeed: Project[] = [
     id: "p2",
     title: "Pocket budget",
     slug: "pocket-budget",
-    shortDescription: "A mobile budgeting app focused on one-handed entry and a calm monthly overview.",
-    fullDescription: "A cross-platform mobile app for tracking personal spending.\n\n### Highlights\n- Quick-add transaction sheet\n- Offline-first storage\n- Category budgets",
+    shortDescription:
+      "A mobile budgeting app focused on one-handed entry and a calm monthly overview.",
+    fullDescription:
+      "A cross-platform mobile app for tracking personal spending.\n\n### Highlights\n- Quick-add transaction sheet\n- Offline-first storage\n- Category budgets",
     category: "Mobile application",
     layout: "mobile",
     status: "maintained",
@@ -65,7 +108,14 @@ export const projectsSeed: Project[] = [
     challenges: "Keeping sync conflicts invisible to the user.",
     solutions: "Last-write-wins per field with a local operation log.",
     media: [
-      m("m3", "sample:mobile", "mobile", "original", "Home screen", "Budgeting app home screen with balance and recent transactions"),
+      m(
+        "m3",
+        "sample:mobile",
+        "mobile",
+        "original",
+        "Home screen",
+        "Budgeting app home screen with balance and recent transactions",
+      ),
     ],
   },
   {
@@ -73,8 +123,10 @@ export const projectsSeed: Project[] = [
     id: "p3",
     title: "Evergreen knowledge base",
     slug: "evergreen-knowledge-base",
-    shortDescription: "Documentation site generator with an editorial reading layout and full-text search.",
-    fullDescription: "A static documentation platform with nested navigation, search and versioned pages.",
+    shortDescription:
+      "Documentation site generator with an editorial reading layout and full-text search.",
+    fullDescription:
+      "A static documentation platform with nested navigation, search and versioned pages.",
     category: "Website",
     layout: "case-study",
     status: "completed",
@@ -86,15 +138,26 @@ export const projectsSeed: Project[] = [
     frontend: ["Astro", "TypeScript"],
     tools: ["Pagefind"],
     context: "Teams needed docs that read like articles, not wikis.",
-    architecture: "Markdown sources are compiled at build time; search indexes are generated per version.",
-    media: [m("m4", "sample:web", "desktop", "original", "Article view", "Documentation page with navigation tree")],
+    architecture:
+      "Markdown sources are compiled at build time; search indexes are generated per version.",
+    media: [
+      m(
+        "m4",
+        "sample:web",
+        "desktop",
+        "original",
+        "Article view",
+        "Documentation page with navigation tree",
+      ),
+    ],
   },
   {
     ...base,
     id: "p4",
     title: "CLI scaffolding tool",
     slug: "cli-scaffolding-tool",
-    shortDescription: "A small command-line tool that generates typed project skeletons from templates.",
+    shortDescription:
+      "A small command-line tool that generates typed project skeletons from templates.",
     fullDescription: "Experimental CLI exploring template composition.",
     category: "Tooling",
     layout: "experimental",

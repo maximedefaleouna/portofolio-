@@ -17,4 +17,8 @@ export function range(start?: string, end?: string, current?: boolean) {
   return `${fmtMonth(start)} — ${current || !end ? "Present" : fmtMonth(end)}`;
 }
 
-export const splitList = (s: string) => s.split(",").map((x) => x.trim()).filter(Boolean);
+export const splitList = (s: string) =>
+  s
+    .split(",")
+    .map((x) => x.trim())
+    .filter(Boolean);

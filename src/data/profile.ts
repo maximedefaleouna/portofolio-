@@ -11,7 +11,8 @@ export const profileSeed: Profile = {
   linkedin: "https://www.linkedin.com/",
   github: "https://github.com/",
   website: "",
-  currentFocus: "Designing a typed content platform with a clean separation between UI and data layers.",
+  currentFocus:
+    "Designing a typed content platform with a clean separation between UI and data layers.",
   learning: ["Rust", "Distributed systems", "Accessibility (WCAG 2.2)"],
   availability: { status: "open", note: "Open to full-time roles and selected freelance work." },
   highlights: [
@@ -19,10 +20,13 @@ export const profileSeed: Profile = {
     "Demo highlight — shipped a project to production",
   ],
   about: {
-    introduction: "This is placeholder biography text. Use the profile editor to describe who you are and what you build.",
-    background: "Describe your path into software: studies, first projects, the teams you have worked with.",
+    introduction:
+      "This is placeholder biography text. Use the profile editor to describe who you are and what you build.",
+    background:
+      "Describe your path into software: studies, first projects, the teams you have worked with.",
     interests: "Interfaces, developer tooling, data-heavy applications, performance.",
-    philosophy: "Prefer simple systems that are easy to change. Make state explicit. Measure before optimising.",
+    philosophy:
+      "Prefer simple systems that are easy to change. Make state explicit. Measure before optimising.",
     objectives: "Grow into a role where product thinking and engineering depth meet.",
     learningGoals: "Deepen backend architecture skills and systems programming.",
   },

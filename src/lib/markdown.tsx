@@ -19,7 +19,16 @@ function inline(text: string, key: string): ReactNode[] {
       const label = mm?.[1] ?? t;
       const raw = mm?.[2] ?? "#";
       const href: string = /^(https?:|mailto:|\/)/.test(raw) ? raw : "#";
-      out.push(<a key={k} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">{label}</a>);
+      out.push(
+        <a
+          key={k}
+          href={href}
+          target={href.startsWith("http") ? "_blank" : undefined}
+          rel="noreferrer"
+        >
+          {label}
+        </a>,
+      );
     } else out.push(<em key={k}>{t.slice(1, -1)}</em>);
     last = m.index + t.length;
   }
@@ -42,23 +51,45 @@ export function Markdown({ source, className = "" }: { source?: string; classNam
       i++;
       while (i < lines.length && !at(i).startsWith("```")) buf.push(at(i++));
       i++;
-      blocks.push(<pre key={key}><code>{buf.join("\n")}</code></pre>);
+      blocks.push(
+        <pre key={key}>
+          <code>{buf.join("\n")}</code>
+        </pre>,
+      );
       continue;
     }
-    if (/^###\s/.test(line)) { blocks.push(<h3 key={key}>{inline(line.slice(4), key)}</h3>); i++; continue; }
-    if (/^##?\s/.test(line)) { blocks.push(<h2 key={key}>{inline(line.replace(/^##?\s/, ""), key)}</h2>); i++; continue; }
-    if (line.startsWith("> ")) { blocks.push(<blockquote key={key}>{inline(line.slice(2), key)}</blockquote>); i++; continue; }
+    if (/^###\s/.test(line)) {
+      blocks.push(<h3 key={key}>{inline(line.slice(4), key)}</h3>);
+      i++;
+      continue;
+    }
+    if (/^##?\s/.test(line)) {
+      blocks.push(<h2 key={key}>{inline(line.replace(/^##?\s/, ""), key)}</h2>);
+      i++;
+      continue;
+    }
+    if (line.startsWith("> ")) {
+      blocks.push(<blockquote key={key}>{inline(line.slice(2), key)}</blockquote>);
+      i++;
+      continue;
+    }
     const img = line.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
     if (img) {
       const src = img[2] ?? "";
-      if (/^https?:/.test(src)) blocks.push(<img key={key} src={src} alt={img[1] ?? ""} loading="lazy" />);
-      i++; continue;
+      if (/^https?:/.test(src))
+        blocks.push(<img key={key} src={src} alt={img[1] ?? ""} loading="lazy" />);
+      i++;
+      continue;
     }
     const vid = line.match(/^@video\((.+)\)$/);
     if (vid) {
       const v = parseVideoUrl(vid[1] ?? "");
-      if (v) blocks.push(<iframe key={key} src={v.embed} title="Embedded video" allowFullScreen loading="lazy" />);
-      i++; continue;
+      if (v)
+        blocks.push(
+          <iframe key={key} src={v.embed} title="Embedded video" allowFullScreen loading="lazy" />,
+        );
+      i++;
+      continue;
     }
     if (/^[-*]\s/.test(line) || /^\d+\.\s/.test(line)) {
       const ordered = /^\d+\.\s/.test(line);
@@ -68,14 +99,35 @@ export function Markdown({ source, className = "" }: { source?: string; classNam
         i++;
       }
       const L = ordered ? "ol" : "ul";
-      blocks.push(<L key={key}>{items.map((t, j) => <li key={j}>{inline(t, `${key}${j}`)}</li>)}</L>);
+      blocks.push(
+        <L key={key}>
+          {items.map((t, j) => (
+            <li key={j}>{inline(t, `${key}${j}`)}</li>
+          ))}
+        </L>,
+      );
       continue;
     }
-    if (!line.trim()) { i++; continue; }
+    if (!line.trim()) {
+      i++;
+      continue;
+    }
     const para: string[] = [];
-    while (i < lines.length && at(i).trim() && !/^(#|>|```|[-*]\s|\d+\.\s|!\[|@video)/.test(at(i))) para.push(at(i++));
-    if (!para.length) { para.push(at(i++)); }
-    blocks.push(<p key={key}>{para.map((p, j) => <Fragment key={j}>{j > 0 && " "}{inline(p, `${key}${j}`)}</Fragment>)}</p>);
+    while (i < lines.length && at(i).trim() && !/^(#|>|```|[-*]\s|\d+\.\s|!\[|@video)/.test(at(i)))
+      para.push(at(i++));
+    if (!para.length) {
+      para.push(at(i++));
+    }
+    blocks.push(
+      <p key={key}>
+        {para.map((p, j) => (
+          <Fragment key={j}>
+            {j > 0 && " "}
+            {inline(p, `${key}${j}`)}
+          </Fragment>
+        ))}
+      </p>,
+    );
   }
   return <div className={`prose-md ${className}`}>{blocks}</div>;
 }
