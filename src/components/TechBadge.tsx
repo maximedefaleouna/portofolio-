@@ -10,12 +10,6 @@ import {
   Network,
   Coffee,
   Code2,
-  FileCode,
-  Layers,
-  Server,
-  Workflow,
-  Globe,
-  Radio,
 } from "lucide-react";
 
 export interface TechItem {
@@ -32,13 +26,13 @@ export const TECH_STACK: TechItem[] = [
   { id: "azure", name: "Azure", category: "cloud", color: "#0078d4" },
   { id: "packer", name: "Packer", category: "devops", color: "#02a8ef" },
   { id: "chaos-eng", name: "Chaos-engineering", category: "devops", color: "#e11d48" },
-  { id: "linux", name: "Linux", category: "devops", color: "#facc15" },
+  { id: "linux", name: "Linux", category: "devops", color: "#eab308" },
   { id: "kubernetes", name: "Kubernetes", category: "devops", color: "#326ce5" },
   { id: "dart", name: "Dart", category: "languages", color: "#00b4ab" },
-  { id: "github", name: "GitHub", category: "tools", color: "#ffffff" },
+  { id: "github", name: "GitHub", category: "tools" },
   { id: "docker", name: "Docker", category: "devops", color: "#2496ed" },
   { id: "helm", name: "Helm", category: "devops", color: "#0f1689" },
-  { id: "firebase", name: "Firebase", category: "cloud", color: "#ffca28" },
+  { id: "firebase", name: "Firebase", category: "cloud", color: "#f59e0b" },
   { id: "terraform", name: "Terraform", category: "devops", color: "#844fba" },
   { id: "network", name: "Network", category: "devops", color: "#10b981" },
   { id: "java", name: "Java", category: "languages", color: "#f89820" },
@@ -49,14 +43,14 @@ export const TECH_STACK: TechItem[] = [
   { id: "nodejs", name: "NodeJS", category: "backend", color: "#5fa04e" },
   { id: "flutter", name: "Flutter", category: "frontend", color: "#02569b" },
   { id: "python", name: "Python", category: "languages", color: "#3776ab" },
-  { id: "bash", name: "#! bash", category: "tools", color: "#ffffff" },
+  { id: "bash", name: "#! bash", category: "tools" },
   { id: "git", name: "Git", category: "tools", color: "#f05032" },
   { id: "typescript", name: "TypeScript", category: "languages", color: "#3178c6" },
   { id: "vagrant", name: "Vagrant", category: "devops", color: "#1563ff" },
   { id: "vscode", name: "VSCode", category: "tools", color: "#007acc" },
-  { id: "react", name: "React", category: "frontend", color: "#61dafb" },
+  { id: "react", name: "React", category: "frontend", color: "#0284c7" },
   { id: "postgresql", name: "PostgreSQL", category: "backend", color: "#4169e1" },
-  { id: "tailwind", name: "Tailwind CSS", category: "frontend", color: "#38bdf8" },
+  { id: "tailwind", name: "Tailwind CSS", category: "frontend", color: "#06b6d4" },
 ];
 
 export function TechIcon({ id, color }: { id: string; color?: string }) {
@@ -174,8 +168,8 @@ export function TechBadgePill({
       type="button"
       className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono transition-all duration-150 border cursor-pointer select-none ${
         selected
-          ? "bg-orange-500/15 border-orange-500/60 text-orange-200 shadow-xs"
-          : "bg-[#141518] hover:bg-[#1a1c20] border-[#22252a] hover:border-zinc-700 text-zinc-300 hover:text-white"
+          ? "bg-orange-500/15 border-orange-500/70 text-orange-600 dark:text-orange-200 shadow-xs"
+          : "bg-zinc-100 dark:bg-[#141518] hover:bg-zinc-200/70 dark:hover:bg-[#1a1c20] border-zinc-200 dark:border-[#22252a] hover:border-zinc-300 dark:hover:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white"
       }`}
     >
       <TechIcon id={tech.id} color={tech.color} />
